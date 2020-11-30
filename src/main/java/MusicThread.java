@@ -1,9 +1,16 @@
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.TextMessage;
 import javax.swing.*;
 import java.io.*;
 import javax.swing.tree.*;
 import javax.swing.event.*;
 import java.awt.event.*;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.sound.sampled.*; //api classes to play wav file
 
 /**
@@ -32,7 +39,9 @@ public class MusicThread extends MusicLibraryGui implements
    private PlayWavThread player = null;
    private boolean stopPlaying;
    private static String userName = null;
-
+   public static String wavFile;
+   public static String[] args;
+   public Subscriber sub;
    public MusicThread(String base) {
       super(base);
       stopPlaying = false;
@@ -84,6 +93,7 @@ public class MusicThread extends MusicLibraryGui implements
          DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
          DefaultMutableTreeNode root =
             (DefaultMutableTreeNode)model.getRoot();
+         userName = args[1];
          if(userName == null)
             userName = System.getProperty("user.name");
          System.out.println("user name is: "+ userName);
@@ -146,8 +156,19 @@ public class MusicThread extends MusicLibraryGui implements
    }
 
    public void actionPerformed(ActionEvent e) {
+      String topicName = args[0];
+      userName = args[1];
+      String password = args[2];
+      Publisher pub = null;
+      try {
+         pub = new Publisher(topicName, userName, password);
+      } catch (Exception exception) {
+         exception.printStackTrace();
+      }
       switch (e.getActionCommand()) {
          case "Exit":
+            System.out.println("Exiting.");
+            //sub.connection.close();
             System.exit(0);
          case "Play":
             try {
@@ -169,8 +190,27 @@ public class MusicThread extends MusicLibraryGui implements
                      jTreeVarSelectedPath.append(File.separator);
                   }
                }
-               player = new PlayWavThread(jTreeVarSelectedPath.toString(), this);
+               wavFile = jTreeVarSelectedPath.toString();
+               player = new PlayWavThread(wavFile, this);
                player.start();
+               // uncomment this line for verbose logging to the screen
+               //BasicConfigurator.configure();
+               if (args.length != 4) {
+                  System.out.println("Expected arguments: <topic-name(String)> <username(String)> <password(String)>");
+                  System.exit(1);
+               }
+               try {
+                  String song = wavFile.substring(12);
+                  StringBuilder sb = new StringBuilder(userName);
+                  sb.append(':').append(song);
+                  if (pub.goPublish(sb.toString())) {
+                     System.out.println("Published: " + sb.toString());
+                  } else {
+                     System.out.println("Unable to publish: " + sb.toString());
+                  }
+               } catch (Exception ex) {
+                  ex.printStackTrace();
+               }
             } catch (InterruptedException ex) { // sleep may throw this exception
                System.out.println("MusicThread sleep was interrupted.");
                ex.printStackTrace();
@@ -195,47 +235,18 @@ public class MusicThread extends MusicLibraryGui implements
       }
    }
 
-   public static void main(String[] args) {
-      String topicName = args[0];
-      System.out.println(topicName);
-      userName = args[1];
-      String password = args[2];
+   public static void main(String[] args) throws Exception {
+      MusicThread.args = args;
       try{
-         new MusicThread(topicName);
+         new MusicThread(args[3]);
       }catch (Exception ex){
          ex.printStackTrace();
       }
-
-       // uncomment this line for verbose logging to the screen
-       //BasicConfigurator.configure();
-       if (args.length != 3) {
-           System.out.println("Expected arguments: <topic-name(String)> <username(String)> <password(String)>");
-           System.exit(1);
-       }
-
-       try {
-           Publisher pub = new Publisher(topicName, "admin", "admin");
-           BufferedReader commandLine = new BufferedReader(new InputStreamReader(System.in));
-
-           // closes the connection and exit the system when 'exit' entered in the command line
-           while (true) {
-               System.out.println("Enter text to publish. Enter 'exit' to close the program.");
-               String s = commandLine.readLine();
-               if (s.equalsIgnoreCase("exit")) {
-                   pub.connection.close();
-                   System.exit(0);
-               }
-               if (pub.goPublish(s)) {
-                   System.out.println("Published: " + s);
-               } else {
-                   System.out.println("Unable to publish: " + s);
-               }
-           }
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
    }
 }
+
+
+
 
 /**
  *  A thread class to play a wav file. PlayWavThread opens an audio input

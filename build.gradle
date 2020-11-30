@@ -27,9 +27,9 @@ dependencies {
 }
 
 def topicName = 'MyTopic'
-def clientName = 'MyClient'
 def identifier = 'default'
 def password = 'default'
+def clientName = 'Music'
 
 task arguments {
     if (project.hasProperty("topicName")) {
@@ -43,9 +43,6 @@ task arguments {
     }
     if (project.hasProperty("clientName")) {
         clientName = project.getProperty("clientName")
-    }
-    if (project.hasProperty("listenFor")) {
-        listenFor = project.getProperty("listenFor")
     }
 }
 
@@ -67,4 +64,26 @@ task MusicThread(type: JavaExec) {
         args identifier
     }
     args password
+    args clientName
+}
+
+task Subscriber(type: JavaExec) {
+    dependsOn arguments
+
+    description 'Subscribe to Music Rankings'
+
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'Subscriber'
+    standardInput = System.in
+
+    args topicName
+    if(project.hasProperty("identifier")){
+        args(project.getProperty('identifier'));
+    }
+    else{
+        args identifier
+    }
+    args password
+    args clientName
 }
