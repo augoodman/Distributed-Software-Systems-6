@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c5b5dd30-4677-4cf5-9db7-d53374237176" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Publisher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Subscriber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/jndi.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Registry.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/DiscoveryServers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/TestJson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/TestProtobuf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/JokeImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Register.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/RegistryAnswerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/request.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/response.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/services/calc.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/services/echomessage.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/services/joke.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/services/registry.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/services/sort.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/services/story.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/services/tips.proto" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Assignment 6" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Assignment 6" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Assignment 6" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1kyy0KAQ2NYEXyEnF3Lo4KwcfUJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\droid\Desktop\School\Current\SER 321\Module 6\Assignment 6\src\main\java" />
+      <recent name="C:\Users\droid\Desktop\School\Current\SER 321\Module 6\Assignment 6\src\main" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Assignment 6 [run]">
+    <configuration name="Music" type="Application" factoryName="Application">
+      <module name="Assignment 6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Assignment 6 [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Assignment 6 [run]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5b5dd30-4677-4cf5-9db7-d53374237176" name="Default Changelist" comment="" />
+      <created>1606686902723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606686902723</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2334" y="174" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606687135894">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2334" y="174" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606687135894" />
+    <state x="2609" y="321" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1606687125927">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2609" y="321" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606687125927" />
+    <state x="2560" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1606689423266">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2560" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606689423266" />
+    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606693284044">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606693284044" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606692500678">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606692500678" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606692500678">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606692500678" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606692500678">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606692500678" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606692500678">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606692500678" />
+    <state x="2381" y="164" key="SettingsEditor" timestamp="1606689678545">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2381" y="164" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606689678545" />
+    <state x="2394" y="267" key="caller.chooser.dialog" timestamp="1606694776173">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2394" y="267" key="caller.chooser.dialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606694776173" />
+  </component>
+</project>
