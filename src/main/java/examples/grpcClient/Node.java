@@ -37,6 +37,7 @@ public class Node {
     server = ServerBuilder.forPort(port)
         .addService(new EchoImpl())
         .addService(new JokeImpl())
+        .addService(new CalcImpl())
         .addService(new RegistryAnswerImpl(services)).build().start();
 
     for (var service : server.getServices()) {
@@ -106,8 +107,8 @@ public class Node {
     System.out.println(args[4]);
 
     // Comment the next 2 lines for your local client server development (Activity 2 task 1, you need this part again for Task 2)
-    Register regThread = new Register(args[0], regPort, args[2], nodePort, args[4]);
-    regThread.start();
+    //Register regThread = new Register(args[0], regPort, args[2], nodePort, args[4]);
+    //regThread.start();
 
     
     server.start();

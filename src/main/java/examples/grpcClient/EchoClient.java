@@ -4,6 +4,8 @@ import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.ArrayList;
 import service.*;
 import test.TestProtobuf;
 
@@ -18,6 +20,7 @@ public class EchoClient {
   private final EchoGrpc.EchoBlockingStub blockingStub;
   private final JokeGrpc.JokeBlockingStub blockingStub2;
   private final RegistryGrpc.RegistryBlockingStub blockingStub3;
+  private final CalcGrpc.CalcBlockingStub blockingStub4;
 
   /** Construct client for accessing server using the existing channel. */
   public EchoClient(Channel channel, Channel regChannel) {
@@ -30,6 +33,7 @@ public class EchoClient {
     blockingStub = EchoGrpc.newBlockingStub(channel);
     blockingStub2 = JokeGrpc.newBlockingStub(channel);
     blockingStub3 = RegistryGrpc.newBlockingStub(regChannel);
+    blockingStub4 = CalcGrpc.newBlockingStub(channel);
   }
 
   public void askServerToParrot(String message) {
@@ -66,7 +70,7 @@ public class EchoClient {
 
     try {
       response = blockingStub2.setJoke(request);
-      System.out.println(response.getOk());
+      System.out.println("set joke ok?: " + response.getOk());
     } catch (Exception e) {
       System.err.println("RPC failed: " + e);
       return;
@@ -103,6 +107,49 @@ public class EchoClient {
     try {
       response = blockingStub3.findServers(request);
       System.out.println(response.toString());
+    } catch (Exception e) {
+      System.err.println("RPC failed: " + e);
+      return;
+    }
+  }
+
+  public void calcNums(String op, double firstNum, double ... otherNums) {
+    if(op.equals("-"));
+      System.out.println("OP: " + op);
+    CalcRequest request;
+    //double[] nums = new double[otherNums.length+1];
+    //nums[0] = firstNum;
+    List<Double> nums = new ArrayList<Double>();
+    nums.add(firstNum);
+    for(int i = 0; i < otherNums.length; i++)
+      nums.add(otherNums[i]);
+    request = CalcRequest.newBuilder().addAllNum(nums).build();
+    CalcResponse response;
+    try {
+      if(op.equals("+")) {
+        response = blockingStub4.add(request);
+        System.out.println("add ok?: " + response.getIsSuccess());
+        if(response.getIsSuccess())
+          System.out.println("sum: " + response.getSolution());
+      }
+      else if(op.equals("-")) {
+        response = blockingStub4.subtract(request);
+        System.out.println("subtract ok?: " + response.getIsSuccess());
+        if(response.getIsSuccess())
+          System.out.println("difference: " + response.getSolution());
+      }
+      else if(op.equals("*")) {
+        response = blockingStub4.multiply(request);
+        System.out.println("multiply ok?: " + response.getIsSuccess());
+        if(response.getIsSuccess())
+          System.out.println("product: " + response.getSolution());
+      }
+      else if(op.equals("/")) {
+        response = blockingStub4.divide(request);
+        System.out.println("divide ok?: " + response.getIsSuccess());
+        if(response.getIsSuccess())
+          System.out.println("quotient: " + response.getSolution());
+      }
     } catch (Exception e) {
       System.err.println("RPC failed: " + e);
       return;
@@ -192,23 +239,63 @@ public class EchoClient {
       // showing 6 joked
       client.askForJokes(Integer.valueOf(6));
 
+      System.out.println("Would you like to add, subtract, multiply or divide (enter choice as +, -, * or /)?");
+      String op = reader.readLine();
+      switch (op) {
+        case "+":
+          System.out.println("Enter numbers to add one at time. Press enter twice after last number.");
+          break;
+        case "-":
+          System.out.println("Enter numbers to subtract one at time. Numbers will be subtracted from in the order " +
+                  "entered.\nPress enter twice after last number.");
+          break;
+        case "*":
+          System.out.println("Enter numbers to multiply one at time. Press enter twice after last number.");
+          break;
+        case "/":
+          System.out.println("Enter numbers to divide one at time. The first number will be divided by the sum of " +
+                  "the remaining numbers.\nPress enter twice after last number.");
+          break;
+        default:
+          System.out.println("Invalid operand.");
+      }
+      String nextEntry = reader.readLine();
+      if(nextEntry.length()>0){
+        double firstNum = Double.valueOf(nextEntry).doubleValue();
+        List<Double> otherNums = new ArrayList<Double>();
+        while(true){
+          nextEntry = reader.readLine();
+          if(nextEntry.length()>0)
+            otherNums.add(Double.valueOf(nextEntry).doubleValue());
+          else break;
+        }
+        double[] dArr = new double[otherNums.size()];
+        for(int i = 0; i < otherNums.size(); i++)
+          dArr[i] = otherNums.get(i);
+        client.calcNums(op, firstNum, dArr);
+      }
+      else
+        System.out.println("You didn't enter anything.");
+      // test add
+      client.calcNums("+", 10, 2, 3);
+
       // ############### Contacting the registry just so you see how it can be done
 
       // Comment these last Service calls while in Activity 1 Task 1, they are not needed and wil throw issues without the Registry running
       // get thread's services
-      client.getServices();
+      //client.getServices();
 
       // get parrot
-      client.findServer("services.Echo/parrot");
+      //client.findServer("services.Echo/parrot");
       
       // get all setJoke
-      client.findServers("services.Joke/setJoke");
+      //client.findServers("services.Joke/setJoke");
 
       // get getJoke
-      client.findServer("services.Joke/getJoke");
+      //client.findServer("services.Joke/getJoke");
 
       // does not exist
-      client.findServer("random");
+      //client.findServer("random");
 
 
     } finally {
