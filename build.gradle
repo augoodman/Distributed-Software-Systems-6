@@ -68,7 +68,7 @@ sourceSets {
  // Method to Echo in client
  def message = "Hello you" // for the echo service in the node
 
- 
+ def auto = 0
 
 // task reading in the arguments if any given, if not the default from above will be used
 task arguments {
@@ -98,6 +98,9 @@ task arguments {
     }
     if (project.hasProperty("serviceHost")) {
       serviceHost = project.getProperty("serviceHost")
+    }
+    if (project.hasProperty("auto")) {
+        serviceHost = project.getProperty("auto")
     }
 }
 
@@ -151,7 +154,8 @@ task runClientJava(type: JavaExec) {
   args servicePort
   args registryHost
   args grpcPort
-  args message 
+  args message
+  args auto
 }
 
 // runs a service node which already has the echo and joke service included
@@ -167,7 +171,6 @@ task runNode(type: JavaExec) {
   args servicePort
   args nodeName
 }
-
 
 // How I ran it:
 // ser321test.duckdns.org is my IP on the first AWS instance

@@ -176,17 +176,19 @@ public class EchoClient {
     try{
       response = blockingStub5.write(request);
       System.out.println("request ok?: " + response.getIsSuccess());
-      if(response.getIsSuccess())
-        System.out.println("the story so far: " + response.getStory());
+      if(response.getIsSuccess()) {
+        System.out.println("The story so far...");
+        System.out.println(response.getStory());
+      }
     } catch (Exception e){
       System.err.println("RPC failed: " + e);
     }
   }
 
   public static void main(String[] args) throws Exception {
-    if (args.length != 5) {
+    if (args.length != 6) {
       System.out
-          .println("Expected arguments: <host(String)> <port(int)> <regHost(string)> <regPort(int)> <message(String)>");
+          .println("Expected arguments: <host(String)> <port(int)> <regHost(string)> <regPort(int)> <message(String)> <auto(int)>");
       System.exit(1);
     }
     int port = 9099;
@@ -194,6 +196,8 @@ public class EchoClient {
     String host = args[0];
     String regHost = args[2];
     String message = args[4];
+    int auto = Integer.parseInt(args[5]);
+
     try {
       port = Integer.parseInt(args[1]);
       regPort = Integer.parseInt(args[3]);
@@ -226,92 +230,218 @@ public class EchoClient {
       // etc is.
 
       /**
-       * Your client should start off with 
+       * Your client should start off with
        * 1. contacting the Registry to check for the available services
        * 2. List the services in the terminal and the client can
-       *    choose one (preferably through numbering) 
+       *    choose one (preferably through numbering)
        * 3. Based on what the client chooses
        *    the terminal should ask for input, eg. a new sentence, a sorting array or
-       *    whatever the request needs 
+       *    whatever the request needs
        * 4. The request should be sent to one of the
        *    available services (client should call the registry again and ask for a
        *    Server providing the chosen service) should send the request to this service and
        *    return the response in a good way to the client
-       * 
+       *
        * You should make sure your client does not crash in case the service node
        * crashes or went offline.
        */
-
-      // Just doing some hard coded calls to the service node without using the
-      // registry
-      // create client
       EchoClient client = new EchoClient(channel, regChannel);
-
-      // call the parrot service on the server
-      client.askServerToParrot(message);
-
-      // ask the user for input how many jokes the user wants
       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-      // Reading data using readLine
-      System.out.println("How many jokes would you like?"); // NO ERROR handling of wrong input here.
-      String num = reader.readLine();
-
-      // calling the joked service from the server with num from user input
-      client.askForJokes(Integer.valueOf(num));
-
-      // adding a joke to the server
-      client.setJoke("I made a pencil with two erasers. It was pointless.");
-
-      // showing 6 joked
-      client.askForJokes(Integer.valueOf(6));
-
-      System.out.println("Would you like to add, subtract, multiply or divide (enter choice as +, -, * or /)?");
-      String op = reader.readLine();
-      switch (op) {
-        case "+":
-          System.out.println("Enter numbers to add one at time. Press enter twice after last number.");
-          break;
-        case "-":
-          System.out.println("Enter numbers to subtract one at time. Numbers will be subtracted from in the order " +
-                  "entered.\nPress enter twice after last number.");
-          break;
-        case "*":
-          System.out.println("Enter numbers to multiply one at time. Press enter twice after last number.");
-          break;
-        case "/":
-          System.out.println("Enter numbers to divide one at time. The first number will be divided by the sum of " +
-                  "the remaining numbers.\nPress enter twice after last number.");
-          break;
-        default:
-          System.out.println("Invalid operand.");
-      }
-      String nextEntry = reader.readLine();
-      if(nextEntry.length()>0){
-        double firstNum = Double.valueOf(nextEntry).doubleValue();
-        List<Double> otherNums = new ArrayList<Double>();
-        while(true){
-          nextEntry = reader.readLine();
-          if(nextEntry.length()>0)
-            otherNums.add(Double.valueOf(nextEntry).doubleValue());
-          else break;
+      String input;
+      if(auto == 0) {
+        while (true) {
+          // Create some terminal prompts
+          System.out.println("***Welcome to SER 321 gRPC***");
+          System.out.println("Please select a service below:");
+          System.out.println("1. Echo");
+          System.out.println("2. Joke");
+          System.out.println("3. Calc");
+          System.out.println("4. Story");
+          System.out.println("5. Exit");
+          // Just doing some hard coded calls to the service node without using the
+          // registry
+          // create client
+          input = reader.readLine();
+          switch (input) {
+            case "1":
+              System.out.println("***ECHO SERVICE***");
+              System.out.println("Please enter text that you'd like to echo to the server:");
+              input = reader.readLine();
+              client.askServerToParrot(input);
+              break;
+            case "2":
+              System.out.println("***JOKE SERVICE***");
+              System.out.println("What do you want to do?");
+              System.out.println("1. Get jokes");
+              System.out.println("2. Create joke");
+              input = reader.readLine();
+              switch (input) {
+                case "1":
+                  System.out.println("***GET JOKES***");
+                  System.out.println("How many jokes would you like?");
+                  input = reader.readLine();
+                  if (Integer.valueOf(input) < 1) {
+                    System.out.println("Invalid input.");
+                    break;
+                  }
+                  client.askForJokes(Integer.valueOf(input));
+                  break;
+                case "2":
+                  System.out.println("***CREATE JOKE***");
+                  System.out.println("Enter a joke to store on server:");
+                  input = reader.readLine();
+                  if (input.isEmpty()) {
+                    System.out.println("Invalid input.");
+                    break;
+                  }
+                  client.setJoke(input);
+                  break;
+                default:
+                  System.out.println("Invalid input.");
+                  break;
+              }
+              break;
+            case "3":
+              System.out.println("***CALC SERVICE***");
+              System.out.println("Would you like to add, subtract, multiply or divide (enter choice as +, -, * or /)?");
+              input = reader.readLine();
+              switch (input) {
+                case "+":
+                  System.out.println("Enter numbers to add one at time. Press enter twice after last number.");
+                  break;
+                case "-":
+                  System.out.println("Enter numbers to subtract one at time. Numbers will be subtracted from in the order " +
+                          "entered.\nPress enter twice after last number.");
+                  break;
+                case "*":
+                  System.out.println("Enter numbers to multiply one at time. Press enter twice after last number.");
+                  break;
+                case "/":
+                  System.out.println("Enter numbers to divide one at time. The first number will be divided by the sum of " +
+                          "the remaining numbers.\nPress enter twice after last number.");
+                  break;
+                default:
+                  System.out.println("Invalid operand.");
+                  break;
+              }
+              String nextEntry = reader.readLine();
+              if (nextEntry.length() > 0) {
+                double firstNum = Double.valueOf(nextEntry).doubleValue();
+                List<Double> otherNums = new ArrayList<Double>();
+                while (true) {
+                  nextEntry = reader.readLine();
+                  if (nextEntry.length() > 0)
+                    otherNums.add(Double.valueOf(nextEntry).doubleValue());
+                  else break;
+                }
+                double[] dArr = new double[otherNums.size()];
+                for (int i = 0; i < otherNums.size(); i++)
+                  dArr[i] = otherNums.get(i);
+                client.calcNums(input, firstNum, dArr);
+              } else
+                System.out.println("You didn't enter anything.");
+              break;
+            case "4":
+              System.out.println("***STORY SERVICE***");
+              System.out.println("What do you want to do?");
+              System.out.println("1. Read latest addition to story");
+              System.out.println("2. Add to story");
+              input = reader.readLine();
+              switch (input) {
+                case "1":
+                  System.out.println("***READ LAST SENTENCE***");
+                  System.out.println("The last sentence added to story is:");
+                  client.readSentence();
+                  break;
+                case "2":
+                  System.out.println("***ADD TO THE STORY***");
+                  System.out.println("Enter a single sentence to add the story (don't forget punctuation!):");
+                  input = reader.readLine();
+                  if (input.isEmpty()) {
+                    System.out.println("You didn't add anything to the story.");
+                    client.write(input);
+                    break;
+                  }
+                  client.write(input);
+                  break;
+                default:
+                  System.out.println("Invalid input.");
+                  break;
+              }
+              break;
+            case "5":
+              System.out.println("Exiting.");
+              channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
+              regChannel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
+              System.exit(0);
+            default:
+              System.out.println("Invalid selection.");
+              channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
+              regChannel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
+              System.exit(1);
+          }
+          System.out.println("Would you like to use another service? (y/n)");
+          input = reader.readLine();
+          if(input.equalsIgnoreCase("n"))
+            break;
         }
-        double[] dArr = new double[otherNums.size()];
-        for(int i = 0; i < otherNums.size(); i++)
-          dArr[i] = otherNums.get(i);
-        client.calcNums(op, firstNum, dArr);
       }
-      else
-        System.out.println("You didn't enter anything.");
-      // test add
-      client.calcNums("+", 10, 2, 3);
-
-      System.out.println("Test read sentence");
-      client.readSentence();
-      System.out.println("Test write sentence");
-      client.write("test, test, test");
-
-
+      else{
+        System.out.println("***RUNNING DEMO***");
+        Thread.sleep(1000);
+        // call the parrot service on the server
+        System.out.println("Echoing Command Line message...");
+        Thread.sleep(1000);
+        client.askServerToParrot(message);
+        Thread.sleep(1000);
+        // calling the joke service from the server
+        System.out.println("Getting a couple jokes...");
+        Thread.sleep(1000);
+        client.askForJokes(2);
+        Thread.sleep(1000);
+        // adding a joke to the server
+        System.out.println("Adding joke: 'I made a pencil with two erasers. It was pointless.'");
+        Thread.sleep(1000);
+        client.setJoke("I made a pencil with two erasers. It was pointless.");
+        Thread.sleep(1000);
+        // add some numbers
+        System.out.println("Adding: 2 + 2...");
+        Thread.sleep(1000);
+        client.calcNums("+", 2, 2);
+        Thread.sleep(1000);
+        // subtract some numbers
+        System.out.println("Subtracting: 4.5 - 2 - 2...");
+        Thread.sleep(1000);
+        client.calcNums("-", 4.5, 2, 2);
+        Thread.sleep(1000);
+        // multiply some numbers
+        System.out.println("Multiplying: 4 * 4 * 4 * 4...");
+        Thread.sleep(1000);
+        client.calcNums("*", 4, 4, 4, 4);
+        Thread.sleep(1000);
+        // multiply some numbers
+        System.out.println("Dividing: 3 / (1 + 1)...");
+        Thread.sleep(1000);
+        client.calcNums("/", 3, 1, 1);
+        Thread.sleep(1000);
+        // read story
+        System.out.println("Starting a story...");
+        Thread.sleep(1000);
+        client.readSentence();
+        Thread.sleep(1000);
+        // add to story
+        System.out.println("That's not very good. Let's add to it.");
+        Thread.sleep(1000);
+        client.write("There was a course called SER 321.");
+        Thread.sleep(1000);
+        client.write("It was very difficult but also very rewarding and fun.");
+        Thread.sleep(1000);
+        client.write("It aslo has a boss instructor named Dr. M.");
+        Thread.sleep(1000);
+        client.write("THE END.");
+        Thread.sleep(1000);
+        System.out.println("***DEMO OVER***");
+      }
 
       // ############### Contacting the registry just so you see how it can be done
 
@@ -321,7 +451,7 @@ public class EchoClient {
 
       // get parrot
       //client.findServer("services.Echo/parrot");
-      
+
       // get all setJoke
       //client.findServers("services.Joke/setJoke");
 

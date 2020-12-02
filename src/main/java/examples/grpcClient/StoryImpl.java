@@ -4,6 +4,7 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.ServerMethodDefinition;
 import io.grpc.stub.StreamObserver;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,21 +30,30 @@ import org.json.*;
 class StoryImpl extends StoryGrpc.StoryImplBase {
 
     // have a global story
+    JSONObject obj = new JSONObject();
     JSONArray story = new JSONArray();
+    File file;
+    FileWriter fw;
     String sentence;
+    int length = 0;
 
-    public StoryImpl(){
+    public StoryImpl() throws IOException{
         super();
         // Start a story
         sentence = "Once upon a time...\n";
         story.put(sentence);
+        obj.put("story", story);
+        length++;
         // Write JSON file
-        try (FileWriter file = new FileWriter("story.json")) {
-            file.write(story.toString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+            //file.close();
+            try {
+                fw = new FileWriter("story.json");
+                fw.write(obj.toString());
+                fw.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
     // Read the story so far
@@ -57,6 +67,7 @@ class StoryImpl extends StoryGrpc.StoryImplBase {
             ReadResponse resp = response.build();
             responseObserver.onNext(resp);
             responseObserver.onCompleted();
+            fw.close();
         } catch (Exception e){
             ReadResponse.Builder response = ReadResponse.newBuilder();
             response.setIsSuccess(false);
@@ -72,22 +83,27 @@ class StoryImpl extends StoryGrpc.StoryImplBase {
         System.out.println("Received from client: " + req.getNewSentence());
         sentence = req.getNewSentence();
         try(FileInputStream in = new FileInputStream("story.json")){
-            story = new JSONArray(in.toString());
-
+            obj = new JSONObject(new JSONTokener(in));
+            story = obj.getJSONArray("story");
             // Add sentence to story
             story.put(sentence);
-
+            fw = new FileWriter("story.json");
+            fw.write(obj.toString());
+            fw.flush();
+            length++;
             // Converty JSONArray to story string
             StringBuilder sb = new StringBuilder();
-            story.iterator().forEachRemaining(element -> {
-                sb.append(element + " ");
-            });
+            for(int i = 0; i < length; i++){
+                sb.append(story.get(i));
+                sb.append(" ");
+            }
             WriteResponse.Builder response = WriteResponse.newBuilder();
             response.setStory(sb.toString());
             response.setIsSuccess(true);
             WriteResponse resp = response.build();
             responseObserver.onNext(resp);
             responseObserver.onCompleted();
+            fw.close();
         } catch (Exception e) {
             WriteResponse.Builder response = WriteResponse.newBuilder();
             response.setIsSuccess(false);
