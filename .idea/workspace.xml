@@ -23,13 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5b5dd30-4677-4cf5-9db7-d53374237176" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registry.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registry.log.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/CalcImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/StoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/CalcImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/CalcImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Node.java" afterDir="false" />
     </list>
@@ -252,10 +248,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2587" y="119" width="586" height="801" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606702899474" />
-    <state x="2675" y="267" key="refactoring.ChangeSignatureDialog" timestamp="1606707454800">
+    <state x="2675" y="267" key="refactoring.ChangeSignatureDialog" timestamp="1606827070425">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2675" y="267" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606707454800" />
+    <state x="2675" y="267" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606827070425" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606789864393">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

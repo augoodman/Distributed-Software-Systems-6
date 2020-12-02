@@ -21,6 +21,7 @@ public class EchoClient {
   private final JokeGrpc.JokeBlockingStub blockingStub2;
   private final RegistryGrpc.RegistryBlockingStub blockingStub3;
   private final CalcGrpc.CalcBlockingStub blockingStub4;
+  private final StoryGrpc.StoryBlockingStub blockingStub5;
 
   /** Construct client for accessing server using the existing channel. */
   public EchoClient(Channel channel, Channel regChannel) {
@@ -34,6 +35,7 @@ public class EchoClient {
     blockingStub2 = JokeGrpc.newBlockingStub(channel);
     blockingStub3 = RegistryGrpc.newBlockingStub(regChannel);
     blockingStub4 = CalcGrpc.newBlockingStub(channel);
+    blockingStub5 = StoryGrpc.newBlockingStub(channel);
   }
 
   public void askServerToParrot(String message) {
@@ -117,8 +119,6 @@ public class EchoClient {
     if(op.equals("-"));
       System.out.println("OP: " + op);
     CalcRequest request;
-    //double[] nums = new double[otherNums.length+1];
-    //nums[0] = firstNum;
     List<Double> nums = new ArrayList<Double>();
     nums.add(firstNum);
     for(int i = 0; i < otherNums.length; i++)
@@ -153,6 +153,33 @@ public class EchoClient {
     } catch (Exception e) {
       System.err.println("RPC failed: " + e);
       return;
+    }
+  }
+
+  public void readSentence(){
+    Empty request = Empty.newBuilder().build();
+    ReadResponse response;
+    try{
+      response = blockingStub5.read(request);
+      System.out.println("request ok?: " + response.getIsSuccess());
+      if(response.getIsSuccess())
+        System.out.println("sentence: " + response.getSentence());
+    } catch (Exception e){
+      System.err.println("RPC failed: " + e);
+    }
+  }
+
+  public void write(String sentence){
+    WriteRequest request = WriteRequest.newBuilder().setNewSentence(sentence).build();
+
+    WriteResponse response;
+    try{
+      response = blockingStub5.write(request);
+      System.out.println("request ok?: " + response.getIsSuccess());
+      if(response.getIsSuccess())
+        System.out.println("the story so far: " + response.getStory());
+    } catch (Exception e){
+      System.err.println("RPC failed: " + e);
     }
   }
 
@@ -278,6 +305,13 @@ public class EchoClient {
         System.out.println("You didn't enter anything.");
       // test add
       client.calcNums("+", 10, 2, 3);
+
+      System.out.println("Test read sentence");
+      client.readSentence();
+      System.out.println("Test write sentence");
+      client.write("test, test, test");
+
+
 
       // ############### Contacting the registry just so you see how it can be done
 

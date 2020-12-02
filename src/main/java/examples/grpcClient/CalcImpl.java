@@ -23,11 +23,7 @@ import buffers.ResponseProtos.Response;
 
 // Implement the calc service. It has four sevices: add, subtract, multiply and divide
 class CalcImpl extends CalcGrpc.CalcImplBase{
-    //super();
-    int[] input;
-
-    public CalcImpl(){
-    }
+    public CalcImpl(){}
 
     // Add a set of numbers
     public void add(CalcRequest req, StreamObserver<CalcResponse> responseObserver) {
@@ -46,7 +42,6 @@ class CalcImpl extends CalcGrpc.CalcImplBase{
         catch (Exception e){
             CalcResponse.Builder response = CalcResponse.newBuilder();
             response.setIsSuccess(false);
-            response.setError("Error: " + e);
             CalcResponse resp = response.build();
             responseObserver.onNext(resp);
             responseObserver.onCompleted();
