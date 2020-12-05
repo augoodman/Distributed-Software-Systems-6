@@ -100,11 +100,14 @@ public class Client {
             for (String s : response.getServicesList()){
                 if(s.equalsIgnoreCase("services.Registry/findServer") || s.equalsIgnoreCase("services.Registry/findServers")
                         || s.equalsIgnoreCase("services.Registry/register")) break;
-                System.out.println(i + ". " + s);
+                if(i<10)
+                    System.out.println(" " + i + ". " + s);
+                else System.out.println(i + ". " + s);
                 services.add(s);
                 i++;
             }
             System.out.println(i + ". Exit");
+            services.add("Exit");
             int input = Integer.parseInt(reader.readLine())-1;
             service = services.get(input);
 
@@ -277,10 +280,11 @@ public class Client {
             Client client = new Client(channel, regChannel);
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String input;
+            boolean b = true;
             if(auto == 0) {
-                while (true) {
+                System.out.println("***REGISTRY SERVICES***");
+                while (b) {
                     // Create some terminal prompts
-                    System.out.println("***Welcome to SER 321 gRPC***");
                     client.getServices();
                     switch (service){
                         case "services.Echo/parrot":
@@ -311,14 +315,14 @@ public class Client {
                             break;
                         case "services.Calc/add":
                             System.out.println("Enter numbers to add one at time. Press enter twice after last number.");
-                            Client.next = reader.readLine();
-                            if (Client.next.length() > 0) {
-                                double firstNum = Double.valueOf(Client.next).doubleValue();
+                            input = reader.readLine();
+                            if (input.length() > 0) {
+                                double firstNum = Double.valueOf(input).doubleValue();
                                 List<Double> otherNums = new ArrayList<Double>();
                                 while (true) {
-                                    Client.next = reader.readLine();
-                                    if (Client.next.length() > 0)
-                                        otherNums.add(Double.valueOf(Client.next).doubleValue());
+                                    input = reader.readLine();
+                                    if (input.length() > 0)
+                                        otherNums.add(Double.valueOf(input).doubleValue());
                                     else break;
                                 }
                                 double[] dArr = new double[otherNums.size()];
@@ -331,14 +335,14 @@ public class Client {
                         case "services.Calc/subtract":
                             System.out.println("Enter numbers to subtract one at time. Numbers will be subtracted from in the order " +
                                     "entered.\nPress enter twice after last number.");
-                            Client.next = reader.readLine();
-                            if (Client.next.length() > 0) {
-                                double firstNum = Double.valueOf(Client.next).doubleValue();
+                            input = reader.readLine();
+                            if (input.length() > 0) {
+                                double firstNum = Double.valueOf(input).doubleValue();
                                 List<Double> otherNums = new ArrayList<Double>();
                                 while (true) {
-                                    Client.next = reader.readLine();
-                                    if (Client.next.length() > 0)
-                                        otherNums.add(Double.valueOf(Client.next).doubleValue());
+                                    input = reader.readLine();
+                                    if (input.length() > 0)
+                                        otherNums.add(Double.valueOf(input).doubleValue());
                                     else break;
                                 }
                                 double[] dArr = new double[otherNums.size()];
@@ -350,14 +354,14 @@ public class Client {
                             break;
                         case "services.Calc/multiply":
                             System.out.println("Enter numbers to multiply one at time. Press enter twice after last number.");
-                            Client.next = reader.readLine();
-                            if (Client.next.length() > 0) {
-                                double firstNum = Double.valueOf(Client.next).doubleValue();
+                            input = reader.readLine();
+                            if (input.length() > 0) {
+                                double firstNum = Double.valueOf(input).doubleValue();
                                 List<Double> otherNums = new ArrayList<Double>();
                                 while (true) {
-                                    Client.next = reader.readLine();
-                                    if (Client.next.length() > 0)
-                                        otherNums.add(Double.valueOf(Client.next).doubleValue());
+                                    input = reader.readLine();
+                                    if (input.length() > 0)
+                                        otherNums.add(Double.valueOf(input).doubleValue());
                                     else break;
                                 }
                                 double[] dArr = new double[otherNums.size()];
@@ -370,14 +374,14 @@ public class Client {
                         case "services.Calc/divide":
                             System.out.println("Enter numbers to divide one at time. The first number will be divided by the sum of " +
                                     "the remaining numbers.\nPress enter twice after last number.");
-                            Client.next = reader.readLine();
-                            if (Client.next.length() > 0) {
-                                double firstNum = Double.valueOf(Client.next).doubleValue();
+                            input = reader.readLine();
+                            if (input.length() > 0) {
+                                double firstNum = Double.valueOf(input).doubleValue();
                                 List<Double> otherNums = new ArrayList<Double>();
                                 while (true) {
-                                    Client.next = reader.readLine();
-                                    if (Client.next.length() > 0)
-                                        otherNums.add(Double.valueOf(Client.next).doubleValue());
+                                    input = reader.readLine();
+                                    if (input.length() > 0)
+                                        otherNums.add(Double.valueOf(input).doubleValue());
                                     else break;
                                 }
                                 double[] dArr = new double[otherNums.size()];
@@ -404,14 +408,13 @@ public class Client {
                             client.write(input);
                             break;
                         case "services.Registry/getServices":
-                            System.out.println("***GET REGISTRY SERVICES***");
-                            client.getServices();
+                            //System.out.println("***GET REGISTRY SERVICES***");
+                            //client.getServices();
                             break;
-                        case "q":
+                        case "Exit":
                             System.out.println("Exiting.");
-                            channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
-                            regChannel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
-                            System.exit(0);
+                            b = false;
+                            break;
                         default:
                             System.out.println("Invalid input.");
                     }

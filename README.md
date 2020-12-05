@@ -1,11 +1,11 @@
 ## SER321-Module6
 # Activity 2
-Task 1
+##Task 1
 1. This project uses gRPC to run custom services. The services Echo and Joke were provided.  I implemented Calc which computes basic calculations such as Add, Subtract, Multiply and Divide (press enter after inputting each number, press enter a second time inputting after last number).  Each Calc service can handle any number of inputs. I also implemented Story which begins a story with an opening and allows users to check the most recent sentence added and add their own sentence.  When adding a sentence, the entire story is read back to the user.  Sentences are stored in JSON file for durability (story.json).
 
 2. Run the default program with:
 ```
-gradle runClient -q --console=plain
+gradle runClientJava -q --console=plain
 ```
 You will see the following menu:
 ```
@@ -19,7 +19,7 @@ Please select a service below:
 ```
 Run the demonstration with:
 ```
-gradle runClient -Pauto=1 -q --console=plain
+gradle runClientJava -Pauto=1 -q --console=plain
 ```
 You will see the following output:
 ```
@@ -213,3 +213,31 @@ The story so far...
 Once upon a time...
  This is going to be epic. Just kidding!
 ```
+
+##Task 2
+1. Client.java and NodeService.java add registry services to the program.  Run NodeService.java with:
+```
+gradle registerServiceNode
+```
+Run Client.java with:
+```
+gradle runClient -q --console=plain
+
+```
+The system runs fine locally and gives the following example output:
+```
+***REGISTRY SERVICES***
+Please select a service below:
+ 1. services.Echo/parrot
+ 2. services.Joke/setJoke
+ 3. services.Joke/getJoke
+ 4. services.Calc/subtract
+ 5. services.Calc/divide
+ 6. services.Calc/add
+ 7. services.Calc/multiply
+ 8. services.Story/read
+ 9. services.Story/write
+10. services.Registry/getServices
+11. Exit
+```
+However, running over a network, I am getting address bind problems.

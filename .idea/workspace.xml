@@ -23,13 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5b5dd30-4677-4cf5-9db7-d53374237176" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registry.log" beforeDir="false" afterPath="$PROJECT_DIR$/registry.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/NodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/NodeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/story.json" beforeDir="false" afterPath="$PROJECT_DIR$/story.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
