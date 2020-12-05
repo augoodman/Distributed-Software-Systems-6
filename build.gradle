@@ -100,7 +100,7 @@ task arguments {
       serviceHost = project.getProperty("serviceHost")
     }
     if (project.hasProperty("auto")) {
-        serviceHost = project.getProperty("auto")
+        auto = project.getProperty("auto")
     }
 }
 
@@ -156,6 +156,21 @@ task runClientJava(type: JavaExec) {
   args grpcPort
   args message
   args auto
+}
+
+task runClient(type: JavaExec) {
+    dependsOn arguments
+    classpath = sourceSets.main.runtimeClasspath
+    description = "Run Client"
+    main = 'example.grpcclient.Client'
+    standardInput = System.in
+    // default args
+    args serviceHost
+    args servicePort
+    args registryHost
+    args grpcPort
+    args message
+    args auto
 }
 
 // runs a service node which already has the echo and joke service included

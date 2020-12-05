@@ -1,22 +1,20 @@
-package example.grpcclient;
+package examples.grpcClient;
 
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import java.util.concurrent.TimeUnit;
-import java.util.List;
-import java.util.ArrayList;
 import service.*;
-import test.TestProtobuf;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Client that requests `parrot` method from the `EchoServer`.
  */
-public class EchoClient {
+public class Client {
   private final EchoGrpc.EchoBlockingStub blockingStub;
   private final JokeGrpc.JokeBlockingStub blockingStub2;
   private final RegistryGrpc.RegistryBlockingStub blockingStub3;
@@ -24,7 +22,7 @@ public class EchoClient {
   private final StoryGrpc.StoryBlockingStub blockingStub5;
 
   /** Construct client for accessing server using the existing channel. */
-  public EchoClient(Channel channel, Channel regChannel) {
+  public Client(Channel channel, Channel regChannel) {
     // 'channel' here is a Channel, not a ManagedChannel, so it is not this code's
     // responsibility to
     // shut it down.
@@ -245,7 +243,7 @@ public class EchoClient {
        * You should make sure your client does not crash in case the service node
        * crashes or went offline.
        */
-      EchoClient client = new EchoClient(channel, regChannel);
+      Client client = new Client(channel, regChannel);
       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
       String input;
       if(auto == 0) {

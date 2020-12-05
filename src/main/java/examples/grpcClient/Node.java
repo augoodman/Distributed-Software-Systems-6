@@ -57,7 +57,7 @@ public class Node {
         // hook.
         System.err.println("*** shutting down gRPC server since JVM is shutting down");
         try {
-          Node.this.stop();
+          example.grpcclient.Node.this.stop();
         } catch (InterruptedException e) {
           e.printStackTrace(System.err);
         }
@@ -99,7 +99,7 @@ public class Node {
       System.out.println("[Port] must be an integer");
       System.exit(2);
     }
-    final Node server = new Node(nodePort);
+    final example.grpcclient.NodeService server = new example.grpcclient.NodeService(nodePort);
     System.out.println(args[0]);
     System.out.println(args[1]);
     System.out.println(args[2]);

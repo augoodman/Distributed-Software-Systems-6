@@ -23,11 +23,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5b5dd30-4677-4cf5-9db7-d53374237176" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/NodeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Assignment 6.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/StoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/StoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/story.json" beforeDir="false" afterPath="$PROJECT_DIR$/story.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/story.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,13 +67,7 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Assignment 6" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Assignment 6" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -98,11 +101,15 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="examples.grpcClient" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\droid\Desktop\School\Current\SER 321\Module 6\Assignment 6\src\main\java" />
       <recent name="C:\Users\droid\Desktop\School\Current\SER 321\Module 6\Assignment 6\src\main" />
@@ -132,14 +139,6 @@
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="aws.lambda" factoryName="Remote">
-      <option name="credentialProviderId" />
-      <option name="regionId" />
-      <option name="functionName" />
-      <option name="input" />
-      <option name="inputIsFile" value="false" />
       <method v="2" />
     </configuration>
     <list>
@@ -199,22 +198,22 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606693284044" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606767286247">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1607129485974">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606767286247" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606767286247">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607129485974" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1607129485974">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606767286247" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606767286247">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607129485974" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1607129485974">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606767286247" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606767286247">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607129485974" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1607129485974">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606767286247" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607129485974" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606766632547">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -243,6 +242,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2394" y="267" key="caller.chooser.dialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606694776173" />
+    <state x="2695" y="297" key="chooseDestDirectoryDialog" timestamp="1607123549273">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2695" y="297" key="chooseDestDirectoryDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607123549273" />
     <state x="2587" y="119" width="586" height="801" key="find.popup" timestamp="1606702899474">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

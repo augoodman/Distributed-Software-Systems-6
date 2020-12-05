@@ -6,6 +6,7 @@ import io.grpc.ServerMethodDefinition;
 import io.grpc.stub.StreamObserver;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +33,7 @@ class StoryImpl extends StoryGrpc.StoryImplBase {
     // have a global story
     JSONObject obj = new JSONObject();
     JSONArray story = new JSONArray();
-    File file;
+    File file  = new File("story.json");
     FileWriter fw;
     String sentence;
     int length = 0;
@@ -45,15 +46,23 @@ class StoryImpl extends StoryGrpc.StoryImplBase {
         obj.put("story", story);
         length++;
         // Write JSON file
-
-            //file.close();
-            try {
-                fw = new FileWriter("story.json");
-                fw.write(obj.toString());
-                fw.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            if(!file.exists()) {
+                //file = new File("story.json");
+                FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(obj.toString());
+                bw.close();
             }
+            /*BufferedWriter out = new BufferedWriter(new FileWriter("story.json"));
+            out.write(obj.toString());
+            out.close();*/
+            /*fw = new FileWriter("story.json");
+            fw.write(obj.toString());
+            fw.flush();*/
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Read the story so far
@@ -67,7 +76,7 @@ class StoryImpl extends StoryGrpc.StoryImplBase {
             ReadResponse resp = response.build();
             responseObserver.onNext(resp);
             responseObserver.onCompleted();
-            fw.close();
+            //fw.close();
         } catch (Exception e){
             ReadResponse.Builder response = ReadResponse.newBuilder();
             response.setIsSuccess(false);
@@ -87,9 +96,18 @@ class StoryImpl extends StoryGrpc.StoryImplBase {
             story = obj.getJSONArray("story");
             // Add sentence to story
             story.put(sentence);
-            fw = new FileWriter("story.json");
+            if(!file.exists())
+                file = new File("story.json");
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(obj.toString());
+            bw.close();
+            /*BufferedWriter out = new BufferedWriter(new FileWriter("story.json"));
+            out.write(obj.toString());
+            out.close();*/
+            /*fw = new FileWriter("story.json");
             fw.write(obj.toString());
-            fw.flush();
+            fw.flush();*/
             length++;
             // Converty JSONArray to story string
             StringBuilder sb = new StringBuilder();
