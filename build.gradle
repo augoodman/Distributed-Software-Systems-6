@@ -187,6 +187,19 @@ task runNode(type: JavaExec) {
   args nodeName
 }
 
+task registerServiceNode(type: JavaExec) {
+    dependsOn arguments
+    classpath = sourceSets.main.runtimeClasspath
+    description = "Run Server"
+    main = 'example.grpcclient.NodeService'
+    // default args
+    args registryHost
+    args grpcPort
+    args serviceHost
+    args servicePort
+    args nodeName
+}
+
 // How I ran it:
 // ser321test.duckdns.org is my IP on the first AWS instance
 // on AWS instance: 

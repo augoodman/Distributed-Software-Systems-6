@@ -99,7 +99,7 @@ public class Node {
       System.out.println("[Port] must be an integer");
       System.exit(2);
     }
-    final example.grpcclient.NodeService server = new example.grpcclient.NodeService(nodePort);
+    final example.grpcclient.Node server = new example.grpcclient.Node(nodePort);
     System.out.println(args[0]);
     System.out.println(args[1]);
     System.out.println(args[2]);

@@ -23,20 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5b5dd30-4677-4cf5-9db7-d53374237176" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/NodeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Assignment 6.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registry.log" beforeDir="false" afterPath="$PROJECT_DIR$/registry.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/EchoClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/StoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/StoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/story.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/examples/grpcClient/NodeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/examples/grpcClient/NodeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +69,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -90,7 +90,7 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1kyy0KAQ2NYEXyEnF3Lo4KwcfUJ" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -102,6 +102,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
@@ -242,10 +243,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2394" y="267" key="caller.chooser.dialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606694776173" />
-    <state x="2695" y="297" key="chooseDestDirectoryDialog" timestamp="1607123549273">
+    <state x="2695" y="297" key="chooseDestDirectoryDialog" timestamp="1607144474752">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2695" y="297" key="chooseDestDirectoryDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607123549273" />
+    <state x="2695" y="297" key="chooseDestDirectoryDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607144474752" />
     <state x="2587" y="119" width="586" height="801" key="find.popup" timestamp="1606702899474">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

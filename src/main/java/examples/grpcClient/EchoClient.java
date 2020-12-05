@@ -161,9 +161,9 @@ public class EchoClient {
     ReadResponse response;
     try{
       response = blockingStub5.read(request);
-      System.out.println("request ok?: " + response.getIsSuccess());
       if(response.getIsSuccess())
         System.out.println("sentence: " + response.getSentence());
+      System.out.println("request ok?: " + response.getIsSuccess());
     } catch (Exception e){
       System.err.println("RPC failed: " + e);
     }
